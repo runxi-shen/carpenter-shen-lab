@@ -1,0 +1,23 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import ResearchHighlights from '../components/home/ResearchHighlights.astro';
+import TeamPreview from '../components/home/TeamPreview.astro';
+import SoftwareShowcase from '../components/home/SoftwareShowcase.astro';
+import LatestNews from '../components/home/LatestNews.astro';
+---
+
+<PageLayout
+  title="Carpenter-Shen Lab | Purdue University"
+  description="Developing advanced methods and software tools to quantify and mine cellular images, accelerating the discovery of new medicines at Purdue University."
+>
+  <Hero />
+  <div class="section-divider"></div>
+  <ResearchHighlights />
+  <div class="section-divider"></div>
+  <TeamPreview />
+  <div class="section-divider"></div>
+  <SoftwareShowcase />
+  <div class="section-divider"></div>
+  <LatestNews />
+</PageLayout>

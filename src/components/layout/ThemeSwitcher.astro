@@ -1,0 +1,78 @@
+---
+---
+
+<div class="theme-switcher flex items-center gap-1 rounded-full p-1" style="background: var(--bg-card); border: 1px solid var(--border-subtle);">
+  <button
+    data-theme-value="light"
+    class="theme-btn px-3 py-1 rounded-full text-xs font-medium transition-all"
+    aria-label="Light theme"
+  >
+    Light
+  </button>
+  <button
+    data-theme-value="dark"
+    class="theme-btn px-3 py-1 rounded-full text-xs font-medium transition-all"
+    aria-label="Dark theme"
+  >
+    Dark
+  </button>
+  <button
+    data-theme-value="hybrid"
+    class="theme-btn px-3 py-1 rounded-full text-xs font-medium transition-all"
+    aria-label="Hybrid theme"
+  >
+    Hybrid
+  </button>
+</div>
+
+<style>
+  .theme-btn {
+    color: var(--text-secondary);
+    cursor: pointer;
+    border: none;
+    background: transparent;
+  }
+  .theme-btn:hover {
+    color: var(--text-heading);
+  }
+  .theme-btn.active {
+    background: var(--accent-gold);
+    color: var(--text-on-accent);
+  }
+</style>
+
+<script>
+  function initThemeSwitcher() {
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+
+    // Scope active-class updates to each switcher instance independently
+    document.querySelectorAll('.theme-switcher').forEach(switcher => {
+      const buttons = switcher.querySelectorAll('.theme-btn');
+
+      buttons.forEach(btn => {
+        const el = btn as HTMLElement;
+
+        // Set initial active state
+        el.classList.toggle('active', el.dataset.themeValue === currentTheme);
+
+        // Guard against duplicate listeners
+        if (el.dataset.listenerAttached) return;
+        el.dataset.listenerAttached = 'true';
+
+        el.addEventListener('click', () => {
+          const theme = el.dataset.themeValue!;
+          document.documentElement.setAttribute('data-theme', theme);
+          localStorage.setItem('cs-lab-theme', theme);
+
+          // Update active state across ALL switcher instances
+          document.querySelectorAll('.theme-btn').forEach(b => {
+            (b as HTMLElement).classList.toggle('active', (b as HTMLElement).dataset.themeValue === theme);
+          });
+        });
+      });
+    });
+  }
+
+  initThemeSwitcher();
+  document.addEventListener('astro:after-swap', initThemeSwitcher);
+</script>

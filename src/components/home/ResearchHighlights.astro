@@ -1,0 +1,76 @@
+---
+import cellprofilerIcon from '../../assets/images/icons/cellprofiler.png';
+import cellpaintingIcon from '../../assets/images/icons/cellpainting.png';
+
+const base = import.meta.env.BASE_URL;
+
+const highlights = [
+  {
+    title: 'Image-Based Profiling',
+    description: 'Extracting rich, quantitative morphological fingerprints from microscopy images of cells to reveal the effects of chemical and genetic perturbations at scale.',
+    icon: null,
+    emoji: '🔬',
+    accent: 'var(--accent-gold)',
+  },
+  {
+    title: 'CellProfiler',
+    description: 'Our flagship open-source software for measuring and analyzing cell images, cited in over 25,000 publications and used worldwide in pharmaceutical and academic research.',
+    icon: cellprofilerIcon.src,
+    emoji: null,
+    accent: 'var(--accent-cyan)',
+  },
+  {
+    title: 'Cell Painting',
+    description: 'A high-throughput morphological profiling assay using fluorescent dyes to create comprehensive cellular fingerprints for drug discovery and toxicology.',
+    icon: cellpaintingIcon.src,
+    emoji: null,
+    accent: 'var(--accent-gold)',
+  },
+];
+---
+
+<section class="py-28 px-4 sm:px-6 lg:px-8" style="background: var(--bg-content);">
+  <div class="max-w-7xl mx-auto">
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <span class="section-label">What We Do</span>
+      <h2 class="mt-4" style="color: var(--text-heading);">Research Focus</h2>
+      <p class="mt-4 max-w-2xl mx-auto text-base text-center" style="color: var(--text-secondary);">
+        We develop computational techniques to quantify and mine the rich information in cellular images.
+      </p>
+      <div class="section-divider mt-8 w-24 mx-auto"></div>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {highlights.map((item, i) => (
+        <div class="card-base group relative overflow-hidden p-7" style={`animation-delay: ${i * 0.15}s`}>
+          <!-- Top accent line -->
+          <div class="absolute top-0 left-0 right-0 h-1 rounded-t-xl" style={`background: ${item.accent};`}></div>
+
+          {item.icon ? (
+            <img src={item.icon} alt={item.title} class="w-12 h-12 mb-5 rounded-lg object-contain" />
+          ) : (
+            <div class="text-4xl mb-5">{item.emoji}</div>
+          )}
+          <h3 class="text-xl font-semibold mb-3" style="color: var(--text-heading);">
+            {item.title}
+          </h3>
+          <p class="text-sm leading-relaxed mb-5" style="color: var(--text-secondary);">
+            {item.description}
+          </p>
+
+          <!-- Learn more link -->
+          <a href={`${base}/research/`}
+             class="inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+             style={`color: ${item.accent};`}>
+            Learn more
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

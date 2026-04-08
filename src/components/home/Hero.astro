@@ -1,0 +1,141 @@
+---
+import annPhoto from '../../assets/images/team/Anne_Carpenter_resized.png';
+import runxiPhoto from '../../assets/images/team/Runxi_Shen_resized.jpg';
+
+const base = import.meta.env.BASE_URL;
+
+const pis = [
+  {
+    name: 'Anne E. Carpenter',
+    role: 'Principal Investigator',
+    title: 'Professor, Purdue University',
+    photo: annPhoto.src,
+    accentColor: 'var(--accent-gold-dim)',
+    roleColor: 'var(--accent-gold)',
+  },
+  {
+    name: 'Runxi Shen',
+    role: 'Co-Principal Investigator',
+    title: 'Research Assistant Professor',
+    photo: runxiPhoto.src,
+    accentColor: 'var(--accent-cyan-dim)',
+    roleColor: 'var(--accent-cyan)',
+  },
+];
+---
+
+<section class="hero-section relative min-h-screen flex items-start overflow-hidden" style="background: var(--hero-gradient);">
+  <!-- Animated dot grid background -->
+  <div class="dot-grid"></div>
+
+  <!-- Subtle radial glow -->
+  <div class="absolute top-1/4 left-1/3 w-96 h-96 rounded-full blur-3xl opacity-20 pointer-events-none"
+       style="background: var(--accent-gold);"></div>
+  <div class="absolute bottom-1/3 right-1/4 w-72 h-72 rounded-full blur-3xl opacity-10 pointer-events-none"
+       style="background: var(--accent-cyan);"></div>
+
+  <!-- Under construction notice — overlaid, does not shift content -->
+  <div class="absolute top-[2.8rem] left-0 right-0 z-20 flex justify-center px-4 pointer-events-none">
+    <div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-xl pointer-events-auto"
+         style="background: color-mix(in srgb, var(--accent-gold) 8%, var(--bg-card)); border: 1px solid var(--accent-gold-dim);">
+      <svg class="w-4 h-4 flex-shrink-0" style="color: var(--accent-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <p class="text-xs sm:text-sm font-display text-center" style="color: var(--accent-gold);">
+        This website is under active development. Content and design may change.
+      </p>
+    </div>
+  </div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-24 w-full">
+    <div class="animate-fade-in">
+      <!-- Purdue badge -->
+      <div class="inline-flex items-center gap-2.5 mb-8 px-5 py-2.5 rounded-full"
+           style="background: var(--bg-card); border: 1px solid var(--border-subtle);">
+        <div class="w-2.5 h-2.5 rounded-full" style="background: var(--accent-gold);"></div>
+        <span class="font-semibold font-mono tracking-wide" style="color: var(--accent-gold); font-size: 0.95rem; letter-spacing: 0.08em;">PURDUE UNIVERSITY</span>
+      </div>
+
+      <!-- Lab Name -->
+      <h1 class="mb-6">
+        <span style="color: var(--text-heading);">Carpenter-</span><span class="gradient-text">Shen</span>
+        <span style="color: var(--text-heading);"> Lab</span>
+      </h1>
+
+      <!-- Tagline -->
+      <p class="text-lg sm:text-xl mb-10 leading-relaxed" style="color: var(--text-secondary);">
+        Developing advanced methods and software tools to quantify and mine the rich information present in
+        <span style="color: var(--accent-gold);">cellular images</span>, and accelerate the
+        <span style="color: var(--accent-gold);">discovery of new medicines</span>.
+        We work across all disease areas, from cancer and psychiatric disease to rare disorders and infectious disease.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap gap-4 mb-14">
+        <a href={`${base}/research/`}
+           class="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-sm transition-all hover:shadow-gold-glow"
+           style="background: var(--accent-gold); color: var(--text-on-accent);">
+          Explore Research
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+        <a href="https://broad.io/mlcbpostdoc"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-sm transition-all hover:shadow-gold-glow"
+           style="border: 1px solid var(--accent-gold-dim); color: var(--accent-gold);">
+          Join Us
+        </a>
+      </div>
+
+      <!-- PI Cards — negative margin aligns card edge with button edge above -->
+      <div class="flex flex-col sm:flex-row gap-5 -ml-1">
+        {pis.map(pi => (
+          <div class="flex items-center gap-4 px-5 py-4 rounded-xl transition-all hover:shadow-gold-glow"
+               style="background: var(--bg-card); border: 1px solid var(--border-card);">
+            <img
+              src={pi.photo}
+              alt={pi.name}
+              class="w-16 h-16 rounded-full object-cover flex-shrink-0"
+              style={`border: 2px solid ${pi.accentColor};`}
+            />
+            <div>
+              <h3 class="text-base font-semibold" style="color: var(--text-heading);">{pi.name}</h3>
+              <p class="text-xs font-medium mt-0.5 font-mono text-left" style={`color: ${pi.roleColor};`}>{pi.role}</p>
+              <p class="text-xs mt-0.5 font-body text-left" style="color: var(--text-secondary);">{pi.title}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Scroll indicator — fades out on scroll -->
+    <div id="scroll-hint" class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce transition-opacity duration-500">
+      <span class="text-xs" style="color: var(--text-secondary);">Scroll</span>
+      <svg class="w-4 h-4" style="color: var(--accent-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initScrollHint() {
+    const hint = document.getElementById('scroll-hint');
+    if (!hint || hint.dataset.listenerAttached) return;
+    hint.dataset.listenerAttached = 'true';
+
+    let hidden = false;
+    window.addEventListener('scroll', () => {
+      if (!hidden && window.scrollY > 50) {
+        hint.style.opacity = '0';
+        hint.style.pointerEvents = 'none';
+        hidden = true;
+      }
+    }, { passive: true });
+  }
+
+  initScrollHint();
+  document.addEventListener('astro:after-swap', initScrollHint);
+</script>
