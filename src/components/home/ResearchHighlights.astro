@@ -1,6 +1,7 @@
 ---
 import cellprofilerIcon from '../../assets/images/icons/cellprofiler.png';
 import cellpaintingIcon from '../../assets/images/icons/cellpainting.png';
+import vimeoThumbnail from '../../assets/images/icons/vimeo_thumbnail.png';
 
 const base = import.meta.env.BASE_URL;
 
@@ -39,6 +40,33 @@ const highlights = [
         We develop computational techniques to quantify and mine the rich information in cellular images.
       </p>
       <div class="section-divider mt-8 w-24 mx-auto"></div>
+    </div>
+
+    <!-- Videos -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      <!-- Vimeo: Lab overview (thumbnail placeholder — TODO: replace with iframe embed once domain is whitelisted in Vimeo privacy settings, video ID: 514015653) -->
+      <a href="https://vimeo.com/514015653" target="_blank" rel="noopener noreferrer" class="rounded-xl overflow-hidden shadow-lg block group" style="background: var(--bg-card);">
+        <div class="relative w-full">
+          <img src={vimeoThumbnail.src} alt="Lab overview video — click to watch on Vimeo" class="w-full h-auto block" />
+          <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
+            <svg class="w-16 h-16 text-white opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </div>
+        </div>
+      </a>
+      <!-- YouTube: Research talk -->
+      <div class="rounded-xl overflow-hidden shadow-lg h-full" style="background: var(--bg-card);">
+        <iframe
+          src="https://www.youtube.com/embed/KDQFUmDJ3nY?start=12"
+          class="w-full h-full"
+          style="min-height: 300px;"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          title="Research Talk"
+        ></iframe>
+      </div>
     </div>
 
     <!-- Cards -->
