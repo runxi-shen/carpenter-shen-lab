@@ -32,7 +32,7 @@ const teamMembers = [
     <div class="text-center mb-16">
       <span class="section-label">Our Team</span>
       <h2 class="mt-4" style="color: var(--text-heading);">Meet the Researchers</h2>
-      <p class="mt-4 max-w-2xl mx-auto text-base text-center" style="color: var(--text-secondary);">
+      <p class="mt-4 max-w-3xl mx-auto text-lg text-center" style="color: var(--text-secondary);">
         Our lab combines expertise in computational biology, machine learning, and cell biology
         to push the boundaries of image-based drug discovery.
       </p>
@@ -42,28 +42,28 @@ const teamMembers = [
     <!-- PI Cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
       {teamMembers.map(member => (
-        <div class="card-base text-center group">
+        <div class="card-base text-center group p-8">
           <!-- Photo -->
           <img
             src={member.photo}
             alt={member.name}
-            class="w-28 h-28 rounded-full mx-auto mb-5 object-cover"
+            class="w-36 h-36 rounded-full mx-auto mb-6 object-cover"
             style={`border: 3px solid ${member.accentDim};`}
           />
 
-          <h3 class="text-xl font-semibold mb-1" style="color: var(--text-heading);">{member.name}</h3>
+          <h3 class="text-2xl font-semibold mb-2" style="color: var(--text-heading);">{member.name}</h3>
 
           <!-- Role badge -->
-          <span class="inline-block text-xs font-semibold font-mono px-3 py-1 rounded-full mt-1 mb-1"
+          <span class="inline-block text-sm font-semibold font-mono px-4 py-1.5 rounded-full mt-1 mb-2"
                 style={`background: color-mix(in srgb, ${member.accentColor} 12%, transparent); color: ${member.accentColor};`}>
             {member.role}
           </span>
 
-          <p class="text-sm font-medium font-mono mt-1 mb-4 text-center" style="color: var(--text-secondary); font-size: 0.8rem;">
+          <p class="text-base font-medium font-mono mt-1 mb-5 text-center" style="color: var(--text-secondary); font-size: 0.95rem;">
             {member.title}
           </p>
 
-          <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
+          <p class="text-base leading-relaxed" style="color: var(--text-secondary);">
             {member.bio}
           </p>
         </div>
