@@ -1,142 +1,69 @@
 /* ─── Google Fonts Import (must be first) ──────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+/* Purdue-aligned free alternatives:
+   Barlow        → replaces Acumin Pro (headlines, UI text)
+   Barlow Condensed → replaces United Sans (callouts, labels, badges)
+   Source Serif 4   → matches Source Serif Pro (body text)              */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;900&family=Barlow+Condensed:wght@400;500;600;700&family=Source+Serif+4:wght@400;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ═══════════════════════════════════════════════════════════════════
-   THEME SYSTEM — Three switchable color palettes
-   Toggle via data-theme attribute on <html>
+   SINGLE THEME — Modern Purdue-branded, high-contrast
+   Dark hero/nav/footer + clean white content sections
    ═══════════════════════════════════════════════════════════════════ */
 
-/* ─── Theme 1: Dark Futuristic ─────────────────────────────────────── */
-[data-theme="dark"],
 :root {
-  --bg-primary: #0A0A0F;
-  --bg-secondary: #12121A;
-  --bg-card: #1A1A25;
-  --bg-card-hover: #22222F;
-  --bg-hero: #0A0A0F;
-  --bg-content: #0A0A0F;
-
-  --text-primary: #E8E4DD;
-  --text-secondary: #9A9690;
-  --text-heading: #FFFFFF;
-  --text-on-accent: #0A0A0F;
-
-  --accent-gold: #CFB991;
-  --accent-gold-bright: #E5D5AA;
-  --accent-gold-dim: #8A7A55;
-  --accent-cyan: #00D4FF;
-  --accent-cyan-dim: #0098B8;
-
-  --border-subtle: rgba(207, 185, 145, 0.12);
-  --border-card: rgba(207, 185, 145, 0.08);
-
-  --nav-bg: rgba(10, 10, 15, 0.85);
-  --nav-text: #E8E4DD;
-  --nav-accent: #CFB991;
-
-  --footer-bg: #08080C;
-  --footer-text: #9A9690;
-
-  --glow-gold: rgba(207, 185, 145, 0.15);
-  --glow-cyan: rgba(0, 212, 255, 0.10);
-
-  --hero-gradient: linear-gradient(180deg, #0A0A0F 0%, #12121A 100%);
-  --section-gradient: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-}
-
-/* ─── Theme 2: Light Academic ──────────────────────────────────────── */
-[data-theme="light"] {
+  /* ─── Core backgrounds ─── */
   --bg-primary: #FFFFFF;
-  --bg-secondary: #F8F6F2;
+  --bg-secondary: #F5F5F0;
   --bg-card: #FFFFFF;
-  --bg-card-hover: #F5F3EF;
-  --bg-hero: #FAFAF7;
   --bg-content: #FFFFFF;
 
-  --text-primary: #2A2A2A;
-  --text-secondary: #6B6560;
-  --text-heading: #1A1A1A;
-  --text-on-accent: #FFFFFF;
+  /* ─── Dark surfaces (hero, nav, footer) ─── */
+  --bg-dark: #111111;
+  --bg-dark-secondary: #1A1A1A;
 
-  --accent-gold: #8E6F3E;
-  --accent-gold-bright: #CFB991;
-  --accent-gold-dim: #B8A070;
-  --accent-cyan: #0098B8;
-  --accent-cyan-dim: #006680;
+  /* ─── Text ─── */
+  --text-primary: #1A1A1A;
+  --text-secondary: #555555;
+  --text-heading: #000000;
+  --text-on-dark: #F5F5F0;
+  --text-on-dark-secondary: #AAAAAA;
+  --text-on-accent: #111111;
 
-  --border-subtle: rgba(142, 111, 62, 0.15);
-  --border-card: rgba(0, 0, 0, 0.08);
+  /* ─── Purdue brand accents ─── */
+  --accent-gold: #CFB991;           /* Boilermaker Gold */
+  --accent-gold-bright: #DAAA00;    /* Rush Gold — vibrant highlights */
+  --accent-gold-dim: #8E6F3E;       /* Aged Gold — subtle accents */
+  /* ─── Secondary accent: a modern teal for tech energy ─── */
+  --accent-teal: #0D9488;
+  --accent-teal-light: #14B8A6;
 
-  --nav-bg: rgba(255, 255, 255, 0.92);
-  --nav-text: #2A2A2A;
-  --nav-accent: #8E6F3E;
+  /* ─── Borders ─── */
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-card: rgba(0, 0, 0, 0.06);
+  --border-dark: rgba(207, 185, 145, 0.15);
 
-  --footer-bg: #1A1A1A;
-  --footer-text: #9A9690;
+  /* ─── Navigation ─── */
+  --nav-bg: rgba(17, 17, 17, 0.95);
+  --nav-text: #F5F5F0;
 
-  --glow-gold: rgba(142, 111, 62, 0.10);
-  --glow-cyan: rgba(0, 152, 184, 0.08);
+  /* ─── Footer ─── */
+  --footer-bg: #111111;
+  --footer-text: #999999;
 
-  --hero-gradient: linear-gradient(180deg, #FAFAF7 0%, #FFFFFF 100%);
-  --section-gradient: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  /* ─── Gradients ─── */
+  --hero-gradient: linear-gradient(135deg, #111111 0%, #1A1A1A 100%);
+  --section-gradient: linear-gradient(180deg, #FFFFFF 0%, #F5F5F0 100%);
+
+  /* ─── Font families (CSS vars for easy component override) ─── */
+  --font-heading: 'Barlow', system-ui, sans-serif;
+  --font-display: 'Barlow Condensed', 'Franklin Gothic Medium', sans-serif;
+  --font-body: 'Source Serif 4', Georgia, serif;
 }
 
-/* ─── Theme 3: Hybrid (Dark Hero → Light Content) ─────────────────── */
-[data-theme="hybrid"] {
-  --bg-primary: #F8F6F2;
-  --bg-secondary: #FFFFFF;
-  --bg-card: #FFFFFF;
-  --bg-card-hover: #F5F3EF;
-  --bg-hero: #0A0A0F;
-  --bg-content: #F8F6F2;
-
-  --text-primary: #2A2A2A;
-  --text-secondary: #6B6560;
-  --text-heading: #1A1A1A;
-  --text-on-accent: #FFFFFF;
-
-  --accent-gold: #8E6F3E;
-  --accent-gold-bright: #CFB991;
-  --accent-gold-dim: #B8A070;
-  --accent-cyan: #00D4FF;
-  --accent-cyan-dim: #0098B8;
-
-  --border-subtle: rgba(142, 111, 62, 0.15);
-  --border-card: rgba(0, 0, 0, 0.08);
-
-  --nav-bg: rgba(10, 10, 15, 0.85);
-  --nav-text: #E8E4DD;
-  --nav-accent: #CFB991;
-
-  --footer-bg: #0A0A0F;
-  --footer-text: #9A9690;
-
-  --glow-gold: rgba(207, 185, 145, 0.15);
-  --glow-cyan: rgba(0, 212, 255, 0.10);
-
-  --hero-gradient: linear-gradient(180deg, #0A0A0F 0%, #12121A 100%);
-  --section-gradient: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-}
-
-/* Hybrid theme: hero section gets dark text overrides */
-[data-theme="hybrid"] .hero-section {
-  --text-primary: #E8E4DD;
-  --text-secondary: #9A9690;
-  --text-heading: #FFFFFF;
-  --text-on-accent: #0A0A0F;
-  --accent-gold: #CFB991;
-  --accent-gold-dim: #8A7A55;
-  --accent-cyan: #00D4FF;
-  --accent-cyan-dim: #0098B8;
-  --bg-card: #1A1A25;
-  --bg-card-hover: #22222F;
-  --border-subtle: rgba(207, 185, 145, 0.12);
-  --border-card: rgba(207, 185, 145, 0.08);
-}
 
 /* ═══════════════════════════════════════════════════════════════════
    BASE STYLES
@@ -150,19 +77,18 @@
   }
 
   body {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: var(--font-heading);
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    transition: background-color 0.4s ease, color 0.4s ease;
     line-height: 1.7;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: var(--font-heading);
     color: var(--text-heading);
     font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
   }
 
   h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
@@ -170,14 +96,14 @@
   h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
 
   p {
-    font-family: 'Source Serif 4', Georgia, serif;
+    font-family: var(--font-body);
     color: var(--text-primary);
     text-align: justify;
     text-justify: inter-word;
   }
 
   a {
-    color: var(--accent-gold);
+    color: var(--accent-gold-dim);
     text-decoration: none;
     transition: color 0.2s ease;
   }
@@ -209,7 +135,7 @@
     left: 0;
     width: 100%;
     height: 3px;
-    background: linear-gradient(90deg, var(--accent-gold), var(--accent-cyan));
+    background: linear-gradient(90deg, var(--accent-gold), var(--accent-teal));
     border-radius: 2px;
   }
 
@@ -219,12 +145,12 @@
     border-radius: 12px;
     padding: 1.5rem;
     transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   }
 
   .card-base:hover {
-    background: var(--bg-card-hover);
-    border-color: var(--accent-gold-dim);
-    box-shadow: 0 0 20px var(--glow-gold);
+    border-color: var(--accent-gold);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 0 0 1px var(--accent-gold);
     transform: translateY(-2px);
   }
 
@@ -233,21 +159,21 @@
     background: linear-gradient(
       90deg,
       transparent,
-      var(--accent-gold-dim),
+      var(--accent-gold),
       transparent
     );
     margin: 0 auto;
     max-width: 80%;
   }
 
-  /* Small monospace label (for inline metadata, badges, etc.) */
+  /* Condensed label — replaces JetBrains Mono with Barlow Condensed (United Sans stand-in) */
   .mono-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--accent-gold);
+    color: var(--accent-gold-dim);
   }
 
   /* Section label — prominent, readable, used above section headings */
@@ -255,12 +181,12 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-display);
     font-size: 1rem;
     font-weight: 600;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--accent-gold);
+    color: var(--accent-gold-dim);
   }
 
   .section-label::before,
@@ -269,7 +195,7 @@
     display: inline-block;
     width: 2rem;
     height: 2px;
-    background: var(--accent-gold-dim);
+    background: var(--accent-gold);
     border-radius: 1px;
   }
 
@@ -279,7 +205,7 @@
     inset: 0;
     background-image: radial-gradient(
       circle,
-      var(--accent-gold-dim) 1px,
+      rgba(207, 185, 145, 0.3) 1px,
       transparent 1px
     );
     background-size: 40px 40px;
@@ -289,24 +215,22 @@
 
   /* Gradient text */
   .gradient-text {
-    background: linear-gradient(135deg, var(--accent-gold), var(--accent-cyan));
+    background: linear-gradient(135deg, var(--accent-gold-bright), var(--accent-teal-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+  /* Gold highlight text on dark backgrounds */
+  .text-gold {
+    color: var(--accent-gold);
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   TRANSITIONS — smooth theme switching
+   TRANSITIONS — smooth interactions
    ═══════════════════════════════════════════════════════════════════ */
 
-*, *::before, *::after {
-  transition-property: background-color, border-color, color, box-shadow, transform;
-  transition-duration: 0.3s;
-  transition-timing-function: ease;
-}
-
-/* Disable transitions on page load to prevent flash */
 .no-transitions *, .no-transitions *::before, .no-transitions *::after {
   transition: none !important;
 }

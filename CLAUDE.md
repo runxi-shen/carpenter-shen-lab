@@ -17,10 +17,10 @@ src/
 │   ├── team/            ← Headshot photos
 │   └── icons/           ← Research area icons (CellProfiler, Cell Painting)
 ├── assets/styles/
-│   └── global.css       ← Design system: 3 theme palettes, typography, utilities
+│   └── global.css       ← Design system: single Purdue-branded palette, typography, utilities
 ├── components/
-│   ├── layout/          ← Header, Footer, ThemeSwitcher
-│   └── home/            ← Hero, ResearchHighlights, TeamPreview, LatestNews, SoftwareShowcase
+│   ├── layout/          ← Header, Footer (ThemeSwitcher deprecated)
+│   └── home/            ← Hero, ResearchHighlights, LatestNews, SoftwareShowcase, TeamPreview (legacy)
 ├── content/             ← Markdown content (team, papers, blog, research, software, positions)
 ├── layouts/             ← BaseLayout, PageLayout
 └── pages/               ← Route pages
@@ -33,21 +33,19 @@ src/
 - `public/` is only for files the browser fetches directly by URL (favicon, robots.txt, CNAME).
 - This ensures correct path resolution regardless of `base` URL config.
 
-### Themes
-- Three switchable color themes: **Light** (default), **Dark**, **Hybrid** (dark hero, light content).
-- Controlled via `data-theme` attribute on `<html>`, persisted to localStorage.
-- All colors use CSS custom properties (e.g., `var(--bg-primary)`, `var(--accent-gold)`).
-- Theme definitions are in `src/assets/styles/global.css`.
+### Color Scheme
+- Single high-contrast theme: dark hero/nav/footer + clean white content sections.
+- No theme switcher (dropped per Anne's feedback, issue #2).
+- All colors use CSS custom properties in `src/assets/styles/global.css`.
+- **Dark surfaces** (hero, nav, footer): near-black (#111111) with Boilermaker Gold (#CFB991) accents
+- **Content areas**: white backgrounds, dark text, Aged Gold (#8E6F3E) accents
+- **Secondary accent**: teal (#0D9488) for tech energy
+- Purdue brand reference: https://marcom.purdue.edu/our-brand/visual-identity/
 
-### Color Palette (Purdue-inspired)
-- **Light theme**: white backgrounds, aged gold (#8E6F3E) accents, dark text
-- **Dark theme**: deep space black (#0A0A0F), Purdue gold (#CFB991), cyan (#00D4FF) tech accent
-- **Hybrid**: dark hero section → light content, combines both palettes
-
-### Typography
-- Headings: Inter (sans-serif)
+### Typography (Purdue-aligned free alternatives)
+- Headings/UI: Barlow (sans-serif) — replaces Acumin Pro
+- Labels/badges: Barlow Condensed (sans-serif) — replaces United Sans
 - Body text: Source Serif 4 (serif), globally `text-align: justify`
-- Labels/metadata: JetBrains Mono (monospace)
 - Section subtitles under headers should be `text-center` (override the global justify)
 
 ### Hosting

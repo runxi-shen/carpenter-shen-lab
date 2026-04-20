@@ -1,5 +1,5 @@
 ---
-import ThemeSwitcher from './ThemeSwitcher.astro';
+import csLogo from '../../assets/images/icons/cs-logo.svg';
 
 const base = import.meta.env.BASE_URL;
 
@@ -9,39 +9,32 @@ const navLinks = [
   { label: 'Research', href: `${base}/research/` },
   { label: 'Papers', href: `${base}/papers/` },
   { label: 'Software', href: `${base}/software/` },
-  { label: 'Positions', href: `${base}/positions/` },
-  { label: 'Blog', href: `${base}/blog/` },
+  { label: 'Positions', href: 'https://docs.google.com/document/d/1R5kSSUX4A3x0CZYsTUdUtxPJYHRwZ04SIl5G06_MrlQ/preview?tab=t.0' },
 ];
 ---
 
 <header
   class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b"
-  style="background: var(--nav-bg); border-color: var(--border-subtle);"
+  style="background: var(--nav-bg); border-color: var(--border-dark);"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
+    <div class="flex items-center justify-between h-20">
       <!-- Logo / Lab Name -->
       <a href={base} class="flex items-center gap-3 group">
-        <div class="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm"
-             style="background: var(--accent-gold); color: var(--text-on-accent);">
-          CS
-        </div>
+        <img src={csLogo.src} alt="CS" class="w-12 h-12 rounded-lg" />
         <div class="hidden sm:flex items-baseline gap-2">
-          <span class="font-semibold text-sm" style="color: var(--nav-text);">
-            Carpenter-Shen Lab
-          </span>
-          <span class="text-xs" style="color: var(--text-secondary);">
-            Purdue University
+          <span class="font-bold text-xl" style="color: var(--accent-gold);">
+            Carpenter-Shen Lab @ Purdue
           </span>
         </div>
       </a>
 
-      <!-- Desktop Navigation -->
+      <!-- Desktop Navigation — larger fonts -->
       <nav class="hidden lg:flex items-center gap-1">
         {navLinks.map(link => (
           <a
             href={link.href}
-            class="px-3 py-2 text-sm font-medium rounded-lg transition-colors hover:bg-white/5"
+            class="px-4 py-2 text-lg font-semibold rounded-lg transition-colors hover:text-[var(--accent-gold)]"
             style="color: var(--nav-text);"
           >
             {link.label}
@@ -49,24 +42,17 @@ const navLinks = [
         ))}
       </nav>
 
-      <!-- Theme Switcher + Mobile Menu -->
-      <div class="flex items-center gap-3">
-        <div class="hidden sm:block">
-          <ThemeSwitcher />
-        </div>
-
-        <!-- Mobile hamburger -->
-        <button
-          id="mobile-menu-btn"
-          class="lg:hidden p-2 rounded-lg"
-          style="color: var(--nav-text);"
-          aria-label="Toggle menu"
-        >
-          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
+      <!-- Mobile hamburger -->
+      <button
+        id="mobile-menu-btn"
+        class="lg:hidden p-2 rounded-lg"
+        style="color: var(--nav-text);"
+        aria-label="Toggle menu"
+      >
+        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
     </div>
   </div>
 
@@ -74,21 +60,18 @@ const navLinks = [
   <div
     id="mobile-menu"
     class="lg:hidden hidden border-t"
-    style="background: var(--nav-bg); border-color: var(--border-subtle);"
+    style="background: var(--nav-bg); border-color: var(--border-dark);"
   >
     <div class="px-4 py-3 space-y-1">
       {navLinks.map(link => (
         <a
           href={link.href}
-          class="block px-3 py-2 text-sm font-medium rounded-lg transition-colors"
+          class="block px-3 py-2.5 text-base font-semibold rounded-lg transition-colors"
           style="color: var(--nav-text);"
         >
           {link.label}
         </a>
       ))}
-      <div class="pt-2 sm:hidden">
-        <ThemeSwitcher />
-      </div>
     </div>
   </div>
 </header>

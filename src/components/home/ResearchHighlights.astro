@@ -1,7 +1,7 @@
 ---
 import cellprofilerIcon from '../../assets/images/icons/cellprofiler.png';
 import cellpaintingIcon from '../../assets/images/icons/cellpainting.png';
-import vimeoThumbnail from '../../assets/images/icons/vimeo_thumbnail.png';
+// import vimeoThumbnail from '../../assets/images/icons/vimeo_thumbnail.png';
 
 const base = import.meta.env.BASE_URL;
 
@@ -10,7 +10,7 @@ const highlights = [
     title: 'Image-Based Profiling',
     description: 'Extracting rich, quantitative morphological fingerprints from microscopy images of cells to reveal the effects of chemical and genetic perturbations at scale.',
     icon: null,
-    emoji: '🔬',
+    emoji: '\u{1F52C}',
     accent: 'var(--accent-gold)',
   },
   {
@@ -18,7 +18,7 @@ const highlights = [
     description: 'Our flagship open-source software for measuring and analyzing cell images, cited in over 25,000 publications and used worldwide in pharmaceutical and academic research.',
     icon: cellprofilerIcon.src,
     emoji: null,
-    accent: 'var(--accent-cyan)',
+    accent: 'var(--accent-teal)',
   },
   {
     title: 'Cell Painting',
@@ -39,34 +39,61 @@ const highlights = [
       <div class="section-divider mt-8 w-24 mx-auto"></div>
     </div>
 
-    <!-- Videos -->
+    <!-- Videos: Anne's YouTube on left, Runxi's YouTube on right -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-      <!-- Vimeo: Lab overview (thumbnail placeholder — TODO: replace with iframe embed once domain is whitelisted in Vimeo privacy settings, video ID: 514015653) -->
-      <a href="https://vimeo.com/514015653" target="_blank" rel="noopener noreferrer" class="rounded-xl overflow-hidden shadow-lg block group" style="background: var(--bg-card);">
-        <div class="relative w-full">
-          <img src={vimeoThumbnail.src} alt="Lab overview video — click to watch on Vimeo" class="w-full h-auto block" />
-          <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
-            <svg class="w-16 h-16 text-white opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          </div>
+      <!-- Anne's YouTube: Lab overview / research talk -->
+      <div>
+        <div class="rounded-xl overflow-hidden shadow-lg" style="background: var(--bg-card); border: 1px solid var(--border-card);">
+          <iframe
+            src="https://www.youtube.com/embed/KDQFUmDJ3nY?start=12"
+            class="w-full"
+            style="min-height: 300px;"
+            frameborder="0"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            title="Anne Carpenter — Research Talk"
+          ></iframe>
         </div>
-      </a>
-      <!-- YouTube: Research talk -->
-      <div class="rounded-xl overflow-hidden shadow-lg h-full" style="background: var(--bg-card);">
-        <iframe
-          src="https://www.youtube.com/embed/KDQFUmDJ3nY?start=12"
-          class="w-full h-full"
-          style="min-height: 300px;"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          title="Research Talk"
-        ></iframe>
+        <p class="mt-3 text-base font-semibold text-center" style="color: var(--text-heading); font-family: var(--font-heading);">
+          Anne Carpenter: When Biology Meets Computer Science
+        </p>
+      </div>
+
+      <!-- Runxi's YouTube: Cell Painting for Rare Disease and Drug Discovery -->
+      <div>
+        <div class="rounded-xl overflow-hidden shadow-lg" style="background: var(--bg-card); border: 1px solid var(--border-card);">
+          <iframe
+            src="https://www.youtube.com/embed/wZFXWg_WfkU"
+            class="w-full"
+            style="min-height: 300px;"
+            frameborder="0"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            title="Cell Painting for Rare Disease and Drug Discovery"
+          ></iframe>
+        </div>
+        <p class="mt-3 text-base font-semibold text-center" style="color: var(--text-heading); font-family: var(--font-heading);">
+          Runxi Shen: Cell Painting for Rare Disease and Drug Discovery
+        </p>
       </div>
     </div>
 
-    <!-- Cards -->
+    <!-- Vimeo: Lab overview — commented out for now
+    <a href="https://vimeo.com/514015653" target="_blank" rel="noopener noreferrer" class="rounded-xl overflow-hidden shadow-lg block group" style="background: var(--bg-card);">
+      <div class="relative w-full">
+        <img src={vimeoThumbnail.src} alt="Lab overview video — click to watch on Vimeo" class="w-full h-auto block" />
+        <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
+          <svg class="w-16 h-16 text-white opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </div>
+      </div>
+    </a>
+    -->
+
+    <!-- Research Area Cards -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       {highlights.map((item, i) => (
         <div class="card-base group relative overflow-hidden p-9" style={`animation-delay: ${i * 0.15}s`}>

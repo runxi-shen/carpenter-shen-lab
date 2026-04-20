@@ -1,0 +1,77 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import annePhoto from '../assets/images/team/Anne_Carpenter_resized.png';
+import runxiPhoto from '../assets/images/team/Runxi_Shen_resized.jpg';
+
+const teamMembers = [
+  {
+    name: 'Anne E. Carpenter',
+    role: 'Principal Investigator',
+    title: 'Professor, Biological Sciences and Computer Science',
+    photo: annePhoto.src,
+    accentColor: 'var(--accent-gold)',
+    accentDim: 'var(--accent-gold-dim)',
+    bio: 'Leading the JUMP, OASIS, and VISTA consortia and the Cells to Cures Engine at Purdue University, coordinating large-scale collaborative research efforts across institutions and industry partners to harness image-based profiling for accelerating drug discovery.',
+  },
+  {
+    name: 'Runxi Shen',
+    role: 'Co-Principal Investigator',
+    title: 'Research Assistant Professor, Biological Sciences',
+    photo: runxiPhoto.src,
+    accentColor: 'var(--accent-teal)',
+    accentDim: 'var(--accent-teal)',
+    bio: 'Developing computational methods for extracting meaningful features from cell images and applying them to biological discoveries, spanning representation learning, deep learning, and large-scale morphological profiling.',
+  },
+];
+---
+
+<PageLayout
+  title="People | Carpenter-Shen Lab"
+  description="Meet the researchers of the Carpenter-Shen Lab at Purdue University."
+>
+  <section class="py-28 px-4 sm:px-6 lg:px-8" style="background: var(--bg-content);">
+    <div class="max-w-7xl mx-auto">
+      <!-- Section header — WAY MUCH BIGGER heading -->
+      <div class="text-center mb-20">
+        <span class="section-label">Who We Are</span>
+        <h1 class="mt-6" style="color: var(--text-heading); font-size: clamp(3.5rem, 8vw, 7rem); font-weight: 900; letter-spacing: -0.03em;">
+          Our Team
+        </h1>
+        <p class="mt-6 max-w-3xl mx-auto text-lg text-center" style="color: var(--text-secondary);">
+          Our computational lab combines expertise in computational biology, machine learning, and cell biology
+          to push the boundaries of image-based drug discovery, in collaboration with biologists who create samples, images, and other omics data.
+        </p>
+        <div class="section-divider mt-10 w-32 mx-auto"></div>
+      </div>
+
+      <!-- PI Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+        {teamMembers.map(member => (
+          <div class="card-base text-center group p-10">
+            <img
+              src={member.photo}
+              alt={member.name}
+              class="w-40 h-40 rounded-full mx-auto mb-6 object-cover"
+              style={`border: 3px solid ${member.accentDim};`}
+            />
+
+            <h3 class="text-2xl font-semibold mb-2" style="color: var(--text-heading);">{member.name}</h3>
+
+            <span class="inline-block text-sm font-semibold font-mono px-4 py-1.5 rounded-full mt-1 mb-2"
+                  style={`background: color-mix(in srgb, ${member.accentColor} 12%, transparent); color: ${member.accentColor};`}>
+              {member.role}
+            </span>
+
+            <p class="text-base font-medium font-mono mt-1 mb-5 text-center" style="color: var(--text-secondary); font-size: 0.95rem;">
+              {member.title}
+            </p>
+
+            <p class="text-base leading-relaxed" style="color: var(--text-secondary);">
+              {member.bio}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</PageLayout>

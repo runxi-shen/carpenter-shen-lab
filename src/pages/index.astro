@@ -2,9 +2,9 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import Hero from '../components/home/Hero.astro';
 import ResearchHighlights from '../components/home/ResearchHighlights.astro';
-import TeamPreview from '../components/home/TeamPreview.astro';
-import SoftwareShowcase from '../components/home/SoftwareShowcase.astro';
 import LatestNews from '../components/home/LatestNews.astro';
+// TeamPreview moved to People page (/people/)
+// SoftwareShowcase moved to Software page (/software/)
 ---
 
 <PageLayout
@@ -14,10 +14,6 @@ import LatestNews from '../components/home/LatestNews.astro';
   <Hero />
   <div class="section-divider"></div>
   <ResearchHighlights />
-  <div class="section-divider"></div>
-  <TeamPreview />
-  <div class="section-divider"></div>
-  <SoftwareShowcase />
   <div class="section-divider"></div>
   <LatestNews />
 </PageLayout>

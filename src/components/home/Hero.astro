@@ -1,105 +1,103 @@
 ---
-import annPhoto from '../../assets/images/team/Anne_Carpenter_resized.png';
-import runxiPhoto from '../../assets/images/team/Runxi_Shen_resized.jpg';
+import csLogo from '../../assets/images/icons/cs-logo.svg';
+import cellpaintingIcon from '../../assets/images/icons/cellpainting.png';
 
 const base = import.meta.env.BASE_URL;
-
-const pis = [
-  {
-    name: 'Anne E. Carpenter',
-    role: 'Principal Investigator',
-    title: 'Professor, Biological Sciences and Computer Science',
-    photo: annPhoto.src,
-    accentColor: 'var(--accent-gold-dim)',
-    roleColor: 'var(--accent-gold)',
-  },
-  {
-    name: 'Runxi Shen',
-    role: 'Co-Principal Investigator',
-    title: 'Research Assistant Professor, Biological Sciences',
-    photo: runxiPhoto.src,
-    accentColor: 'var(--accent-cyan-dim)',
-    roleColor: 'var(--accent-cyan)',
-  },
-];
 ---
 
-<section class="hero-section relative min-h-screen flex items-start overflow-hidden" style="background: var(--hero-gradient);">
+<section class="hero-section relative min-h-screen flex items-center overflow-hidden" style="background: var(--hero-gradient);">
   <!-- Animated dot grid background -->
   <div class="dot-grid"></div>
 
-  <!-- Subtle radial glow -->
-  <div class="absolute top-1/4 left-1/3 w-96 h-96 rounded-full blur-3xl opacity-20 pointer-events-none"
+  <!-- Subtle radial glows -->
+  <div class="absolute top-1/4 left-1/6 w-96 h-96 rounded-full blur-3xl opacity-10 pointer-events-none"
        style="background: var(--accent-gold);"></div>
-  <div class="absolute bottom-1/3 right-1/4 w-72 h-72 rounded-full blur-3xl opacity-10 pointer-events-none"
-       style="background: var(--accent-cyan);"></div>
+  <div class="absolute bottom-1/4 right-1/3 w-72 h-72 rounded-full blur-3xl opacity-8 pointer-events-none"
+       style="background: var(--accent-teal);"></div>
 
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 w-full" style="margin-top: -2rem;">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-24 w-full">
-    <div class="animate-fade-in">
+      <!-- LEFT: Mission text -->
+      <div class="animate-fade-in">
+        <!-- Lab name -->
+        <div class="flex items-center gap-4 mb-8">
+          <img src={csLogo.src} alt="CS Lab" class="w-20 h-20 rounded-xl" />
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl">
+            <span style="color: var(--accent-gold);">Carpenter</span><span style="color: var(--text-on-dark-secondary);">-</span><span class="gradient-text">Shen</span>
+            <span style="color: var(--text-on-dark-secondary);"> Lab</span>
+          </h1>
+        </div>
 
-      <!-- Lab Name -->
-      <h1 class="mb-6">
-        <span style="color: var(--accent-gold);">Carpenter</span><span style="color: var(--text-secondary);">-</span><span class="gradient-text">Shen</span>
-        <span style="color: var(--text-secondary);"> Lab</span>
-        <span style="color: var(--text-secondary);"> @Purdue</span>
-      </h1>
+        <!-- Mission statement — the hook -->
+        <p class="text-xl sm:text-2xl font-semibold leading-snug mb-6" style="color: var(--text-on-dark); font-family: var(--font-heading); text-align: justify;">
+          Very few people get to solve puzzles all day long and directly help patients suffering from disease.
+        </p>
 
-      <!-- Tagline -->
-      <p class="text-lg sm:text-xl mb-10 leading-relaxed" style="color: var(--text-secondary);">
-        Developing advanced methods and software tools to quantify and mine the rich information present in
-        <span style="color: var(--accent-gold);">cellular images</span>, and accelerate the
-        <span style="color: var(--accent-gold);">discovery of new medicines</span>.
-        We work across all disease areas, from cancer and psychiatric disease to rare disorders and infectious disease.
-      </p>
+        <!-- Expanded description -->
+        <p class="text-base sm:text-lg leading-relaxed mb-8" style="color: var(--text-on-dark-secondary); text-align: justify;">
+          We develop advanced methods and software to make discoveries in
+          <span style="color: var(--accent-gold);">cell images</span>.
+          The rich information can reveal the causes and cures for diseases, and the impact of chemicals on biological systems.
+          We work across all disease areas, from
+          <span style="color: var(--accent-gold);">cancer</span> and
+          <span style="color: var(--accent-gold);">psychiatric disease</span> to
+          <span style="color: var(--accent-gold);">rare disorders</span> and
+          <span style="color: var(--accent-gold);">infectious disease</span>.
+        </p>
 
-      <!-- CTAs -->
-      <div class="flex flex-wrap gap-4 mb-14">
-        <a href={`${base}/research/`}
-           class="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-sm transition-all hover:shadow-gold-glow"
-           style="background: var(--accent-gold); color: var(--text-on-accent);">
-          Explore Research
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </a>
-        <a href="https://broad.io/mlcbpostdoc"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-sm transition-all hover:shadow-gold-glow"
-           style="border: 1px solid var(--accent-gold-dim); color: var(--accent-gold);">
-          Join Us
-        </a>
+        <!-- CTAs -->
+        <div class="flex flex-wrap gap-4">
+          <a href={`${base}/research/`}
+             class="inline-flex items-center gap-2 px-8 py-4 rounded-lg font-bold text-base transition-all hover:shadow-lg"
+             style="background: var(--accent-gold); color: var(--text-on-accent);">
+            Explore Research
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="https://docs.google.com/document/d/1R5kSSUX4A3x0CZYsTUdUtxPJYHRwZ04SIl5G06_MrlQ/preview?tab=t.0"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 px-8 py-4 rounded-lg font-bold text-base transition-all hover:bg-white/5"
+             style="border: 2px solid var(--accent-gold); color: var(--accent-gold);">
+            Join Us
+          </a>
+        </div>
       </div>
 
-      <!-- PI Cards — negative margin aligns card edge with button edge above -->
-      <div class="flex flex-col sm:flex-row gap-5 -ml-1">
-        {pis.map(pi => (
-          <div class="flex items-center gap-4 px-5 py-4 rounded-xl transition-all hover:shadow-gold-glow"
-               style="background: var(--bg-card); border: 1px solid var(--border-card);">
-            <img
-              src={pi.photo}
-              alt={pi.name}
-              class="w-16 h-16 rounded-full object-cover flex-shrink-0"
-              style={`border: 2px solid ${pi.accentColor};`}
-            />
-            <div>
-              <h3 class="text-base font-semibold" style="color: var(--text-heading);">{pi.name}</h3>
-              <p class="text-xs font-medium mt-0.5 font-mono text-left" style={`color: ${pi.roleColor};`}>{pi.role}</p>
-              <p class="text-xs mt-0.5 font-body text-left" style="color: var(--text-secondary);">{pi.title}</p>
-            </div>
+      <!-- RIGHT: Cell Painting image placeholder -->
+      <div class="relative flex items-center justify-center">
+        <div class="relative w-full aspect-square max-w-lg mx-auto rounded-2xl overflow-hidden border-2"
+             style="border-color: var(--accent-gold); background: var(--bg-dark-secondary);">
+          <!-- Placeholder: replace with high-res Cell Painting merged channel image -->
+          <img src={cellpaintingIcon.src}
+               alt="Cell Painting merged channel image"
+               class="w-full h-full object-cover opacity-90"
+               fetchpriority="high" />
+          <!-- Overlay gradient for visual depth -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+          <!-- Label -->
+          <div class="absolute bottom-4 left-4 right-4">
+            <span class="inline-block px-4 py-2 rounded-lg text-base font-semibold"
+                  style="background: rgba(17, 17, 17, 0.8); color: var(--accent-gold); font-family: var(--font-display); letter-spacing: 0.03em;">
+              Cell Painting, a high-content image-based<br/>assay for morphological profiling
+            </span>
           </div>
-        ))}
+        </div>
+        <!-- Decorative glow behind the image -->
+        <div class="absolute inset-0 rounded-2xl blur-2xl opacity-20 -z-10"
+             style="background: linear-gradient(135deg, var(--accent-gold), var(--accent-teal));"></div>
       </div>
     </div>
+  </div>
 
-    <!-- Scroll indicator — fades out on scroll -->
-    <div id="scroll-hint" class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce transition-opacity duration-500">
-      <span class="text-xs" style="color: var(--text-secondary);">Scroll</span>
-      <svg class="w-4 h-4" style="color: var(--accent-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-      </svg>
-    </div>
+  <!-- Scroll indicator -->
+  <div id="scroll-hint" class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce transition-opacity duration-500">
+    <span class="text-xs" style="color: var(--text-on-dark-secondary);">Scroll</span>
+    <svg class="w-4 h-4" style="color: var(--accent-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
   </div>
 </section>
 
